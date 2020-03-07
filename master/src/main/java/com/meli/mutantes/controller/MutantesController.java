@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
     @PostMapping(value = "/mutant/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> isMutant(@RequestBody DnaDTO dna) {
         try {
-            if(MutantesService.isMutant(dna)) {
+            if(MutantesService.isMutant(dna.getDna())) {
                 //return ResponseEntity.status(HttpStatus.OK).body(toString());
                 System.out.println("dna = " + dna.toString());
                 System.out.println(HttpStatus.OK);

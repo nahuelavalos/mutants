@@ -1,6 +1,5 @@
 package com.meli.mutantes.service;
 
-import com.meli.mutantes.dto.DnaDTO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,19 +23,19 @@ public class MutantesService {
 
 
 
-    public static boolean isMutant(DnaDTO dna) {
+    public static boolean isMutant(String[] dna) {
 
-        String[][] mat = new String[dna.getDna().length][dna.getDna().length];
+        String[][] mat = new String[dna.length][dna.length];
 
         boolean isValid = false;
 
         System.out.println("#####################################################################################");
         System.out.println("Matriz");
-      for(int i=0; i<dna.getDna().length; i++)
+      for(int i=0; i<dna.length; i++)
       {
-        for(int j = 0; j< dna.getDna().length; j++)
+        for(int j = 0; j< dna.length; j++)
         {
-            mat[i][j] = dna.getDna()[i].substring(j,j+1);
+            mat[i][j] = dna[i].substring(j,j+1);
             System.out.print(mat[i][j] + " ");
         }
         System.out.println();
@@ -45,12 +44,12 @@ public class MutantesService {
 
     //HORIZONTAL
         System.out.print("- Horizontal: ");
-        for(int i=0; i<dna.getDna().length; i++) {
-        for(int j = 0; j< dna.getDna().length-3; j++) {
+        for(int i=0; i<dna.length; i++) {
+        for(int j = 0; j< dna.length-3; j++) {
             if (mat[i][j].equals(mat[i][j+1]) && mat[i][j+1].equals(mat[i][j+2]) && mat[i][j+2].equals(mat[i][j+3])) {
                 System.out.print(mat[i][j] + mat[i][j+1] + mat[i][j+2] + mat[i][j+3] + " ");
-                //return true;
-                isValid = true;
+                return true;
+                //isValid = true;
             }
         }
     }
@@ -58,12 +57,12 @@ public class MutantesService {
 
     //VERTICAL
         System.out.print("- Vertical: ");
-        for(int j=0; j<dna.getDna().length; j++) {
-        for(int i = 0; i< dna.getDna().length-3; i++) {
+        for(int j=0; j<dna.length; j++) {
+        for(int i = 0; i< dna.length-3; i++) {
             if (mat[i][j].equals(mat[i+1][j]) && mat[i+1][j].equals(mat[i+2][j]) && mat[i+2][j].equals(mat[i+3][j])) {
                 System.out.print(mat[i][j] + mat[i+1][j] + mat[i+2][j] + mat[i+3][j] + " ");
-                //return true;
-                isValid = true;
+                return true;
+                //isValid = true;
             }
         }
     }
@@ -71,12 +70,12 @@ public class MutantesService {
 
     //DIAGONAL IZQUIERDA A DERECHA
         System.out.print("- Diagonal Izquierda a Derecha TOPDOWN: ");
-        for (int i = 0; i < dna.getDna().length - 3; i++) {
-        for (int j = 0; j < dna.getDna().length - 3; j++) {
+        for (int i = 0; i < dna.length - 3; i++) {
+        for (int j = 0; j < dna.length - 3; j++) {
             if (mat[i][j].equals(mat[i+1][j+1]) && mat[i+1][j+1].equals(mat[i+2][j+2]) && mat[i+2][j+2].equals(mat[i+3][j+3])) {
                 System.out.print(mat[i][j] + mat[i+1][j+1] + mat[i+2][j+2] + mat[i+3][j+3] + " ");
-                //return true;
-                isValid = true;
+                return true;
+                //isValid = true;
             }
         }
     }
@@ -84,19 +83,19 @@ public class MutantesService {
 
     //DIAGONAL DERECHA A IZQUIERDA
         System.out.print("- Diagonal Derecha a Izquierda TOPDOWN: ");
-        for (int i = dna.getDna().length-1; i>2; i--) {
-        for (int j = 0; j< dna.getDna().length - 3; j++) {
+        for (int i = dna.length-1; i>2; i--) {
+        for (int j = 0; j< dna.length - 3; j++) {
             if (mat[i][j].equals(mat[i-1][j+1]) && mat[i-1][j+1].equals(mat[i-2][j+2]) && mat[i-2][j+2].equals(mat[i-3][j+3])) {
                 System.out.print(mat[i][j] + mat[i-1][j+1] + mat[i-2][j+2] + mat[i-3][j+3] + " ");
-                //return true;
-                isValid = true;
+                return true;
+                //isValid = true;
             }
         }
     }
         System.out.println();
 
-        //return false;
-        return isValid;
+        return false;
+        //return isValid;
     }
 
 
