@@ -13,15 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Optional;
 
 @RestController
     public class MutantController {
-
-    long conthumano = 0;
-    long contmutante = 0;
-    public StatsDTO stats = new StatsDTO(conthumano, contmutante);
 
     @PostMapping(value = "/mutant/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> isMutant(@RequestBody DnaDTO dna) {
@@ -31,11 +26,6 @@ import java.util.Optional;
             newHuman.setDna(dna.getDna());
             Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
             if(MutantService.isMutant(dna.getDna()) && MutantService.isValid(dna.getDna())) {
-                //stats.SetStatsMutante();
-                //System.out.println("dna = " + dna.toString());
-                //System.out.println(HttpStatus.OK);
-                ////////////////// POST DB ///////////////
-
                 if(!isPresent.isPresent()){
                     humanRepository.save(newHuman);
                 }
@@ -43,13 +33,9 @@ import java.util.Optional;
                 {
                     System.out.println("ADN DUPLICADO");
                 }
-                ////////////////// POST DB ///////////////
                 return new ResponseEntity<>(HttpStatus.OK);
             }
             else {
-                //System.out.println("dna = " + dna.toString());
-                //System.out.println(HttpStatus.FORBIDDEN);
-                //stats.SetStatsHumano();
                 newHuman.setMutante(false);
                 if(!isPresent.isPresent()){
                     humanRepository.save(newHuman);
@@ -87,9 +73,10 @@ import java.util.Optional;
     public StatsDTO getStatsDTO() {
         long mutants = humanRepository.countByMutante(true);
         long total = humanRepository.count();
-        //StatsDTO stats = new StatsDTO(mutants, total);
+        StatsDTO stats = new StatsDTO(mutants, total);
         return stats;
     }
+
 
 
 }
