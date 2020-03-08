@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MutantesServiceTests {
+public class MutantServiceTests {
 
     @Test
     public void ejemploChallenge() {
         String[] ejemploChallenge = {
                 "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"
         };
-        assertTrue(MutantesService.isMutant(ejemploChallenge));
+        assertTrue(MutantService.isMutant(ejemploChallenge));
     }
 
     @Test
@@ -19,14 +19,14 @@ public class MutantesServiceTests {
         String[] ejemploHumano = {
                 "ATGCGA","CGGTCC","TTATGT","AGAAGG","CTCCTA","TCACTG"
         };
-        assertFalse(MutantesService.isMutant(ejemploHumano));
+        assertFalse(MutantService.isMutant(ejemploHumano));
     }
 
     @Test
     public void ejemploFull() {
          String[] ejemploFull= {
             "ATGCGA", "CAGCGC", "TTCGGT", "ACAAGG", "CCCCTG", "TCACTG"};
-         assertTrue(MutantesService.isMutant(ejemploFull));
+         assertTrue(MutantService.isMutant(ejemploFull));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class MutantesServiceTests {
         String[] horizontalDNA = {
                 "CCCCC", "ATCGT", "ATCGT", "CTTTT", "CAGAC"
         };
-        assertTrue(MutantesService.isMutant(horizontalDNA));
+        assertTrue(MutantService.isMutant(horizontalDNA));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class MutantesServiceTests {
         String[] verticalDNA = {
                 "CGCGC", "ATCGT", "ATCGT", "CTCTT", "CAGAT"
         };
-        assertTrue(MutantesService.isMutant(verticalDNA));
+        assertTrue(MutantService.isMutant(verticalDNA));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class MutantesServiceTests {
         String[] diagonalDNA = {
                 "CCACC", "ACCGT", "AACGT", "CTACA", "CAGAT"
         };
-        assertTrue(MutantesService.isMutant(diagonalDNA));
+        assertTrue(MutantService.isMutant(diagonalDNA));
     }
 
     @Test
@@ -58,37 +58,37 @@ public class MutantesServiceTests {
         String[] antiDiagonalDNA = {
                 "CGCCC", "ATCGT", "ACGGT", "CGCTT", "GAGAG"
         };
-        assertTrue(MutantesService.isMutant(antiDiagonalDNA));
+        assertTrue(MutantService.isMutant(antiDiagonalDNA));
     }
 
     @Test
     public void testNull() {
         String[] testNull = null;
-        assertFalse(MutantesService.isValid(testNull));
+        assertFalse(MutantService.isValid(testNull));
     }
 
     @Test
     public void testVacio() {
         String[] testVacio = {""};
-        assertFalse(MutantesService.isValid(testVacio));
+        assertFalse(MutantService.isValid(testVacio));
     }
 
     @Test
     public void testMatrizChica() {
         String[] testMatrizChica = {"CGA", "TGC", "TTA"};
-        assertFalse(MutantesService.isValid(testMatrizChica));
+        assertFalse(MutantService.isValid(testMatrizChica));
     }
 
     @Test
     public void testNXM() {
         String[] testNXM = {"ATGCGA","CGGTCC","TTATGT","AGAAGG"};
-        assertFalse(MutantesService.isValid(testNXM));
+        assertFalse(MutantService.isValid(testNXM));
     }
 
     @Test
     public void testLetraInvalidad() {
         String[] testLetraInvalidad = {"ATGCGA","CGGTCC","TTATGT","AGAAXG","CTCCTA","TCACTG"};
-        assertFalse(MutantesService.isValid(testLetraInvalidad));
+        assertFalse(MutantService.isValid(testLetraInvalidad));
     }
 
 }

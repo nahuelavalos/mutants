@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 @Service
-public class MutantesService {
+public class MutantService {
     public static boolean isMutant(String[] dna) {
 
         String[][] mat = new String[dna.length][dna.length];

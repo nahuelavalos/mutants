@@ -23,9 +23,6 @@ public class Human {
     private boolean mutante;
 
 
-
-
-
     public boolean getMutante() {
         return mutante;
     }
@@ -42,14 +39,4 @@ public class Human {
         this.dna = dna;
     }
 
-    /*
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    */
 }

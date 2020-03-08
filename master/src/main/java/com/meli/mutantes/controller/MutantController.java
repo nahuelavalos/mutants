@@ -4,7 +4,7 @@ import com.meli.mutantes.document.Human;
 import com.meli.mutantes.dto.DnaDTO;
 import com.meli.mutantes.dto.StatsDTO;
 import com.meli.mutantes.repository.HumanRepository;
-import com.meli.mutantes.service.MutantesService;
+import com.meli.mutantes.service.MutantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-    public class MutantesController {
+    public class MutantController {
 
     long conthumano = 0;
     long contmutante = 0;
@@ -30,7 +30,7 @@ import java.util.Optional;
             newHuman.setMutante(true);
             newHuman.setDna(dna.getDna());
             Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
-            if(MutantesService.isMutant(dna.getDna()) && MutantesService.isValid(dna.getDna())) {
+            if(MutantService.isMutant(dna.getDna()) && MutantService.isValid(dna.getDna())) {
                 //stats.SetStatsMutante();
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.OK);

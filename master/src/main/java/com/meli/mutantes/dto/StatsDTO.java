@@ -16,20 +16,4 @@ public class StatsDTO {
         this.count_human_dna = countHuman;
         this.ratio = countHuman == 0 ? 1d : (double) countMutant / (double) countHuman;
     }
-
-    public void SetStatsMutante()
-    {
-        this.count_human_dna++;
-        this.count_mutant_dna++;
-        this.ratio = this.count_human_dna == 0 ? 1d : (double) this.count_mutant_dna / (double) this.count_human_dna;
-    }
-
-    public void SetStatsHumano()
-    {
-        this.count_human_dna++;
-        this.ratio = this.count_human_dna == 0 ? 1d : (double) this.count_mutant_dna / (double) this.count_human_dna;
-    }
-
-
-
 }
