@@ -26,15 +26,16 @@ import java.util.Optional;
     @PostMapping(value = "/mutant/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> isMutant(@RequestBody DnaDTO dna) {
         try {
+            Human newHuman = new Human();
+            newHuman.setMutante(true);
+            newHuman.setDna(dna.getDna());
+            Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
             if(MutantesService.isMutant(dna.getDna()) && MutantesService.isValid(dna.getDna())) {
                 //stats.SetStatsMutante();
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.OK);
                 ////////////////// POST DB ///////////////
-                Human newHuman = new Human();
-                newHuman.setMutante(true);
-                newHuman.setDna(dna.getDna());
-                Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
+
                 if(!isPresent.isPresent()){
                     humanRepository.save(newHuman);
                 }
@@ -49,6 +50,14 @@ import java.util.Optional;
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.FORBIDDEN);
                 //stats.SetStatsHumano();
+                newHuman.setMutante(false);
+                if(!isPresent.isPresent()){
+                    humanRepository.save(newHuman);
+                }
+                else
+                {
+                    System.out.println("ADN DUPLICADO");
+                }
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         } catch (Exception ex) {
