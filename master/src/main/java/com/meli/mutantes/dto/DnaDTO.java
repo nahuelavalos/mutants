@@ -3,14 +3,11 @@ package com.meli.mutantes.dto;
 public class DnaDTO {
     private String[] dna;
 
-    public String[] getDna() {
-        return dna;
-    }
-
-    public void setDna(String[] dna) {
-        this.dna = dna;
-    }
-
+    public String[] getDna() { return dna; }
+    //public void setDna(String[] dna) {
+    //    this.dna = dna;
+    //}
+    /*
     public String toString() {
         StringBuilder sb = new StringBuilder();
         String lineFeed = "\n";
@@ -22,6 +19,7 @@ public class DnaDTO {
 
         return sb.toString();
     }
+    */
 }
 
 

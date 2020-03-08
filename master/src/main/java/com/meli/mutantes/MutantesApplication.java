@@ -8,6 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MutantesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MutantesApplication.class, args);
-		System.out.println("Running");
+		//System.out.println("Running");
 	}
 }
