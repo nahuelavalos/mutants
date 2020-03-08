@@ -12,8 +12,8 @@ public class StatsDTO {
     private Double ratio;
 
     public StatsDTO(Long countHuman, Long countMutant) {
-        this.count_mutant_dna = countHuman;
-        this.count_human_dna = countMutant;
+        this.count_mutant_dna = countMutant;
+        this.count_human_dna = countHuman;
         this.ratio = countHuman == 0 ? 1d : (double) countMutant / (double) countHuman;
     }
 

@@ -5,6 +5,7 @@ import com.meli.mutantes.dto.DnaDTO;
 import com.meli.mutantes.dto.StatsDTO;
 import com.meli.mutantes.repository.HumanRepository;
 import com.meli.mutantes.service.MutantesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +49,28 @@ import org.springframework.web.bind.annotation.RestController;
 
     @GetMapping(value = "stats", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getStats() {
+
+        long mutants = humanRepository.countByMutante(true);
+        long total = humanRepository.count();
+        System.out.println("mutants: " + mutants);
+        System.out.println("total: " + total);
+        StatsDTO stats = new StatsDTO(total, mutants);
+        //return stats;
+
         return ResponseEntity.status(HttpStatus.OK).body(stats);
+    }
+
+    //MANDAR AL SERVICE
+
+    @Autowired
+    HumanRepository humanRepository;
+
+    //CLASE IGUAL A LA DEL CONTROLLER
+    public StatsDTO getStatsDTO() {
+        long mutants = humanRepository.countByMutante(true);
+        long total = humanRepository.count();
+        //StatsDTO stats = new StatsDTO(mutants, total);
+        return stats;
     }
 
 
