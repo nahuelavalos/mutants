@@ -21,29 +21,12 @@ import java.util.Optional;
     @PostMapping(value = "/mutant/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> isMutant(@RequestBody DnaDTO dna) {
         try {
-            Human newHuman = new Human();
-            newHuman.setMutante(true);
-            newHuman.setDna(dna.getDna());
-            Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
             if(MutantService.isMutant(dna.getDna()) && MutantService.isValid(dna.getDna())) {
-                if(!isPresent.isPresent()){
-                    humanRepository.save(newHuman);
-                }
-                else
-                {
-                    System.out.println("ADN DUPLICADO");
-                }
+                saveDna(true, dna);
                 return new ResponseEntity<>(HttpStatus.OK);
             }
             else {
-                newHuman.setMutante(false);
-                if(!isPresent.isPresent()){
-                    humanRepository.save(newHuman);
-                }
-                else
-                {
-                    System.out.println("ADN DUPLICADO");
-                }
+                saveDna(false, dna);
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         } catch (Exception ex) {
@@ -64,20 +47,25 @@ import java.util.Optional;
         return ResponseEntity.status(HttpStatus.OK).body(stats);
     }
 
-    //MANDAR AL SERVICE
+    //MANDAR AL SERVICE////////////////////////////////////////////////////
 
     @Autowired
     HumanRepository humanRepository;
 
-    //CLASE IGUAL A LA DEL CONTROLLER
-    public StatsDTO getStatsDTO() {
-        long mutants = humanRepository.countByMutante(true);
-        long total = humanRepository.count();
-        StatsDTO stats = new StatsDTO(mutants, total);
-        return stats;
+    public void saveDna(boolean isMutant, DnaDTO dna) {
+        Human newHuman = new Human();
+        newHuman.setMutante(isMutant);
+        newHuman.setDna(dna.getDna());
+        Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
+        if (!isPresent.isPresent()) {
+            humanRepository.save(newHuman);
+        }
+        else {
+            System.out.println("ADN DUPLICADO");
+        }
     }
 
-
+    //MANDAR AL SERVICE////////////////////////////////////////////////////
 
 }
 
