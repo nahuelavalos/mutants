@@ -3,6 +3,7 @@ package com.meli.mutantes.controller;
 import com.meli.mutantes.document.Human;
 import com.meli.mutantes.dto.DnaDTO;
 import com.meli.mutantes.dto.StatsDTO;
+import com.meli.mutantes.repository.HumanRepository;
 import com.meli.mutantes.service.MutantesService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,9 +28,10 @@ import org.springframework.web.bind.annotation.RestController;
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.OK);
                 ////////////////// POST DB ///////////////
-                Human newHuman = new Human();
-                newHuman.setEsMutante(true);
-                newHuman.setDna(dna.getDna());
+                //Human newHuman = new Human();
+                //newHuman.setMutante(true);
+                //newHuman.setDna(dna.getDna());
+
                 ////////////////// POST DB ///////////////
                 return new ResponseEntity<>(HttpStatus.OK);
             }

@@ -1,7 +1,9 @@
 package com.meli.mutantes.document;
 
+import com.meli.mutantes.repository.HumanRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,24 +13,25 @@ import java.io.Serializable;
 @Document(collection = "Human")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Human implements Serializable {
+public class Human {
     @Id
     @NotNull
     private String id;
 
-    private boolean esMutante;
-
     private String[] dna;
 
-    //public Human(boolean mutante, String[] dna) {
-    //}
+    private boolean mutante;
 
-    public boolean getEsMutante() {
-        return esMutante;
+
+
+
+
+    public boolean getMutante() {
+        return mutante;
     }
 
-    public void setEsMutante(boolean esMutante) {
-        this.esMutante = esMutante;
+    public void setMutante(boolean mutante) {
+        this.mutante = mutante;
     }
 
     public String[] getDna() {
@@ -39,6 +42,7 @@ public class Human implements Serializable {
         this.dna = dna;
     }
 
+    /*
     public String getId() {
         return id;
     }
@@ -46,4 +50,6 @@ public class Human implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    */
 }

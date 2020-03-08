@@ -1,4 +1,6 @@
 package com.meli.mutantes.service;
+import com.meli.mutantes.document.Human;
+import com.meli.mutantes.repository.HumanRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -109,5 +111,17 @@ public class MutantesService {
 
         return true;
     }
+
+    /*
+    @Override
+    HumanRepository humanRepository;
+
+    @Override
+    public void save(String id, String[] dna, boolean mutante) {
+        Human newHuman = new Human(dna, mutante);
+        humanRepository.save(newHuman);
+    }
+    */
+
 }
 
