@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
     public class MutantesController {
 
@@ -25,21 +27,28 @@ import org.springframework.web.bind.annotation.RestController;
     public ResponseEntity<?> isMutant(@RequestBody DnaDTO dna) {
         try {
             if(MutantesService.isMutant(dna.getDna()) && MutantesService.isValid(dna.getDna())) {
-                stats.SetStatsMutante();
+                //stats.SetStatsMutante();
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.OK);
                 ////////////////// POST DB ///////////////
-                //Human newHuman = new Human();
-                //newHuman.setMutante(true);
-                //newHuman.setDna(dna.getDna());
-
+                Human newHuman = new Human();
+                newHuman.setMutante(true);
+                newHuman.setDna(dna.getDna());
+                Optional<Human> isPresent = humanRepository.findByDna(dna.getDna());
+                if(!isPresent.isPresent()){
+                    humanRepository.save(newHuman);
+                }
+                else
+                {
+                    System.out.println("ADN DUPLICADO");
+                }
                 ////////////////// POST DB ///////////////
                 return new ResponseEntity<>(HttpStatus.OK);
             }
             else {
                 //System.out.println("dna = " + dna.toString());
                 //System.out.println(HttpStatus.FORBIDDEN);
-                stats.SetStatsHumano();
+                //stats.SetStatsHumano();
                 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
             }
         } catch (Exception ex) {

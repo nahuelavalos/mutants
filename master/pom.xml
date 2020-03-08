@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>master</artifactId>
-	<version>mutantes-1.1.0</version>
+	<version>mutantes-1.1.4</version>
 	<name>master</name>
 	<description> Master project for Spring Boot</description>
 
