@@ -1,10 +1,12 @@
 package com.meli.mutantes.service;
+
 import com.meli.mutantes.document.Human;
+import com.meli.mutantes.dto.DnaDTO;
 import com.meli.mutantes.repository.HumanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 @Service
@@ -113,16 +115,6 @@ public class MutantService {
         return true;
     }
 
-    /*
-    @Override
-    HumanRepository humanRepository;
-
-    @Override
-    public void save(String id, String[] dna, boolean mutante) {
-        Human newHuman = new Human(dna, mutante);
-        humanRepository.save(newHuman);
-    }
-    */
     @Autowired
     HumanRepository humanRepository;
 
@@ -132,6 +124,19 @@ public class MutantService {
 
     public long countHumans() {
         return humanRepository.count();
+    }
+
+    public void saveDna(boolean isMutant, DnaDTO dna) {
+        Human human = new Human();
+        human.setMutante(isMutant);
+        human.setDna(dna.getDna());
+        Optional<Human> dnaExistente = humanRepository.findByDna(dna.getDna());
+        if (!dnaExistente.isPresent()) {
+            humanRepository.save(human);
+        }
+        else {
+            System.out.println("ADN DUPLICADO");
+        }
     }
 }
 

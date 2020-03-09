@@ -9,11 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface HumanRepository extends MongoRepository<Human, String> {
-
     Long countByMutante(boolean mutante);
     Optional<Human> findByDna(String[] dna);
-
-
-    //HumanRepository save(boolean mutante, String[] dna);
-
 }
