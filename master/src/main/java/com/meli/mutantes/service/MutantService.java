@@ -14,7 +14,7 @@ public class MutantService {
     public static boolean isMutant(String[] dna) {
 
         String[][] mat = new String[dna.length][dna.length];
-        boolean value = false;
+        int count= 0;
 
         System.out.println("#####################################################################################");
         System.out.println("Matriz");
@@ -23,29 +23,30 @@ public class MutantService {
                 mat[i][j] = dna[i].substring(j,j+1);
                 System.out.print(mat[i][j] + " ");
             }
+            System.out.println();
         }
-        System.out.println();
 
         System.out.print("- Horizontal: ");
         for(int i=0; i<dna.length; i++) {
             for(int j = 0; j< dna.length-3; j++) {
                 if (mat[i][j].equals(mat[i][j+1]) && mat[i][j+1].equals(mat[i][j+2]) && mat[i][j+2].equals(mat[i][j+3])) {
                     System.out.print(mat[i][j] + mat[i][j+1] + mat[i][j+2] + mat[i][j+3] + " ");
-                    //return true;
-                    value = true;
+                    count++;
+                    //if(count==2)
+                    //{ return true; }
                 }
             }
         }
         System.out.println();
-
 
         System.out.print("- Vertical: ");
         for(int j=0; j<dna.length; j++) {
             for(int i = 0; i< dna.length-3; i++) {
                 if (mat[i][j].equals(mat[i+1][j]) && mat[i+1][j].equals(mat[i+2][j]) && mat[i+2][j].equals(mat[i+3][j])) {
                     System.out.print(mat[i][j] + mat[i+1][j] + mat[i+2][j] + mat[i+3][j] + " ");
-                    //return true;
-                    value = true;
+                    count++;
+                    //if(count==2)
+                    //{ return true; }
                 }
             }
         }
@@ -56,8 +57,9 @@ public class MutantService {
             for (int j = 0; j < dna.length - 3; j++) {
                 if (mat[i][j].equals(mat[i+1][j+1]) && mat[i+1][j+1].equals(mat[i+2][j+2]) && mat[i+2][j+2].equals(mat[i+3][j+3])) {
                     System.out.print(mat[i][j] + mat[i+1][j+1] + mat[i+2][j+2] + mat[i+3][j+3] + " ");
-                    //return true;
-                    value = true;
+                    count++;
+                    //if(count==2)
+                    //{ return true; }
                 }
             }
         }
@@ -68,15 +70,23 @@ public class MutantService {
            for (int j = 0; j< dna.length - 3; j++) {
                 if (mat[i][j].equals(mat[i-1][j+1]) && mat[i-1][j+1].equals(mat[i-2][j+2]) && mat[i-2][j+2].equals(mat[i-3][j+3])) {
                     System.out.print(mat[i][j] + mat[i-1][j+1] + mat[i-2][j+2] + mat[i-3][j+3] + " ");
-                    //return true;
-                    value = true;
+                    count++;
+                    //if(count==2)
+                    //{ return true; }
                 }
             }
         }
         System.out.println();
 
         //return false;
-        return value;
+        if(count>=2) {
+            System.out.println("TRUE");
+            return true;
+        }
+        else {
+            System.out.println("FALSE");
+            return false;
+        }
     }
 
     public static boolean isValid(String[] dna)
