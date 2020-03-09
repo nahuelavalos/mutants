@@ -1,6 +1,7 @@
 package com.meli.mutantes.service;
 import com.meli.mutantes.document.Human;
 import com.meli.mutantes.repository.HumanRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -122,6 +123,15 @@ public class MutantService {
         humanRepository.save(newHuman);
     }
     */
+    @Autowired
+    HumanRepository humanRepository;
 
+    public long countMutants() {
+        return humanRepository.countByMutante(true);
+    }
+
+    public long countHumans() {
+        return humanRepository.count();
+    }
 }
 

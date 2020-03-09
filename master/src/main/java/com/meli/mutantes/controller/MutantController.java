@@ -36,14 +36,7 @@ import java.util.Optional;
 
     @GetMapping(value = "stats", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getStats() {
-
-        long mutants = humanRepository.countByMutante(true);
-        long total = humanRepository.count();
-        System.out.println("mutants: " + mutants);
-        System.out.println("total: " + total);
-        StatsDTO stats = new StatsDTO(total, mutants);
-        //return stats;
-
+        StatsDTO stats = new StatsDTO(mutantService.countHumans(), mutantService.countMutants());
         return ResponseEntity.status(HttpStatus.OK).body(stats);
     }
 
@@ -51,6 +44,9 @@ import java.util.Optional;
 
     @Autowired
     HumanRepository humanRepository;
+
+    @Autowired
+    MutantService mutantService;
 
     public void saveDna(boolean isMutant, DnaDTO dna) {
         Human newHuman = new Human();
