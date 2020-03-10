@@ -99,12 +99,12 @@ $ java -jar master-mutants-1.2.2.jar
 
 ## Host
 
-La API REST está hosteada en una maquina virtual (Ubuntu) que ofrece el servicio de cloud computing de Amazon Web Services.
+La API REST está hosteada en una Maquina Virtual (**Ubuntu**) que ofrece el servicio de Cloud Computing de **Amazon Web Services**.
 
 
 ## Base de Datos
 
-MongoDB (NoSQL) local.
+**MongoDB** (NoSQL) local.
 
 Por defecto queda levantada en **mongodb://localhost:27017**
   
