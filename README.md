@@ -33,7 +33,7 @@ Caso contrario devuelve **403-Forbidden**.
 
 >###### Response
 >```sh
->400-Forbidden
+>403-Forbidden
 >```
 
 
