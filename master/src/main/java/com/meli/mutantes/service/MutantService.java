@@ -79,14 +79,6 @@ public class MutantService {
         System.out.println();
 
         return false;
-        /*if(count>=2) {
-            System.out.println("TRUE");
-            return true;
-        }
-        else {
-            System.out.println("FALSE");
-            return false;
-        }*/
     }
 
     public static boolean isValid(String[] dna)
@@ -149,9 +141,9 @@ public class MutantService {
         if (!dnaExistente.isPresent()) {
             humanRepository.save(human);
         }
-        //else {
-        //    System.out.println("ADN DUPLICADO");
-        //}
+        else {
+            System.out.println("ADN DUPLICADO");
+        }
     }
 
 }

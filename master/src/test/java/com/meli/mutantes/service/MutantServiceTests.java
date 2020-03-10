@@ -112,33 +112,4 @@ public class MutantServiceTests {
         assertTrue(true);
     }
 
-    /*
-    @Test
-    public void testSaveDNA() {
-        mutantService.saveDna(true, dna);
-        //if(mutantService.countMutants()>=min)
-        assertTrue(true);
-    }
-
-    @Autowired
-    DnaDTO dna;
-
-
-    @Test
-    public void testCountMutants() {
-        long min=mutantService.countMutants();
-        //if(mutantService.countMutants()>=min)
-            assertTrue(true);
-    }
-
-    @Test
-    public void testCountHumans() {
-        long min=0;
-        if(mutantService.countHumans()>=min)
-            assertTrue(true);
-    }
-
-    @Autowired
-    MutantService mutantService;
-*/
 }
