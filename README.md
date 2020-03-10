@@ -94,5 +94,24 @@ Comandos para correr la API REST.
 Por defecto queda levantada en  [http://localhost/8080/](http://localhost/8080/)
 
 ```sh
-$ java -jar master-mutants-1.2.0.jar
+$ java -jar master-mutants-1.2.2.jar
 ```
+
+## Host
+
+La API REST está hosteada en una maquina virtual (Ubuntu) que ofrece el servicio de cloud computing de Amazon Web Services.
+
+
+## Base de Datos
+
+MongoDB (NoSQL) local.
+
+Por defecto queda levantada en [mongodb://localhost:27017](mongodb://localhost:27017)
+  
+
+## Test Unitarios
+
+[Coverage > %74](https://github.com/nahuelavalos/mutants/blob/master/master/coverage.html)
+
+![Coverage](https://raw.githubusercontent.com/nahuelavalos/mutants/master/master/coverage.png)
+
