@@ -106,7 +106,7 @@ La API REST está hosteada en una maquina virtual (Ubuntu) que ofrece el servici
 
 MongoDB (NoSQL) local.
 
-Por defecto queda levantada en [mongodb://localhost:27017](mongodb://localhost:27017)
+Por defecto queda levantada en **mongodb://localhost:27017**
   
 
 ## Test Unitarios
