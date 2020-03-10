@@ -72,7 +72,7 @@ Devuelve la cantidad de mutantes registrados en la base de datos.
 
 Comandos para configurar el ambiente en Unix
 
-```python
+```sh
 ## Java
 $ sudo apt-get install default-jre
 $ java -version
@@ -93,6 +93,6 @@ Comandos para correr la API REST.
 
 Por defecto queda levantada en  [http://localhost/8080/](http://localhost/8080/)
 
-```python
+```sh
 $ java -jar master-mutants-1.2.0.jar
 ```
