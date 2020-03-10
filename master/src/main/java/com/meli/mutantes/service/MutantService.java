@@ -94,12 +94,14 @@ public class MutantService {
         if(Objects.isNull(dna) || dna.length == 0) {
             System.out.println("#####################################################################################");
             System.out.println("NULL");
+            System.out.println("#####################################################################################");
             return false;
         }
 
         if(Stream.of(dna).anyMatch(String::isEmpty)){
             System.out.println("#####################################################################################");
             System.out.println("VACIO");
+            System.out.println("#####################################################################################");
             return false;
         }
 
@@ -107,18 +109,21 @@ public class MutantService {
         if(dna.length < 4) {
             System.out.println("#####################################################################################");
             System.out.println("PEQUENIA");
+            System.out.println("#####################################################################################");
             return false;
         }
 
         if(Stream.of(dna).anyMatch(s -> s.length() != dna.length)) {
             System.out.println("#####################################################################################");
             System.out.println("NXM");
+            System.out.println("#####################################################################################");
             return false;
         }
 
         if(!Stream.of(dna).allMatch(s -> s.matches("[ATCG]+"))) {
             System.out.println("#####################################################################################");
             System.out.println("LETRA_INCORRECTA");
+            System.out.println("#####################################################################################");
             return false;
         }
 
@@ -144,9 +149,10 @@ public class MutantService {
         if (!dnaExistente.isPresent()) {
             humanRepository.save(human);
         }
-        else {
-            System.out.println("ADN DUPLICADO");
-        }
+        //else {
+        //    System.out.println("ADN DUPLICADO");
+        //}
     }
+
 }
 

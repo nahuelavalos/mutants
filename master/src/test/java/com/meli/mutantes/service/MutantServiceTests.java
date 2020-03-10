@@ -1,6 +1,11 @@
 package com.meli.mutantes.service;
 
+import com.meli.mutantes.dto.DnaDTO;
+import com.meli.mutantes.dto.StatsDTO;
+import com.meli.mutantes.repository.HumanRepository;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -62,6 +67,14 @@ public class MutantServiceTests {
     }
 
     @Test
+    public void testValida() {
+        String[] testValida = {
+                "ATGCGA", "CAGTGC", "TTATGT", "AGAAGG", "CCCCTA", "TCACTG"
+        };
+        assertTrue(MutantService.isMutant(testValida));
+    }
+
+    @Test
     public void testNull() {
         String[] testNull = null;
         assertFalse(MutantService.isValid(testNull));
@@ -91,4 +104,41 @@ public class MutantServiceTests {
         assertFalse(MutantService.isValid(testLetraInvalida));
     }
 
+    @Test
+    public void testStats() {
+        long humanos=1;
+        long mutantes=1;
+        StatsDTO statsDTO = new StatsDTO(humanos, mutantes);
+        assertTrue(true);
+    }
+
+    /*
+    @Test
+    public void testSaveDNA() {
+        mutantService.saveDna(true, dna);
+        //if(mutantService.countMutants()>=min)
+        assertTrue(true);
+    }
+
+    @Autowired
+    DnaDTO dna;
+
+
+    @Test
+    public void testCountMutants() {
+        long min=mutantService.countMutants();
+        //if(mutantService.countMutants()>=min)
+            assertTrue(true);
+    }
+
+    @Test
+    public void testCountHumans() {
+        long min=0;
+        if(mutantService.countHumans()>=min)
+            assertTrue(true);
+    }
+
+    @Autowired
+    MutantService mutantService;
+*/
 }
