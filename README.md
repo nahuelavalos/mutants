@@ -5,7 +5,7 @@ Challenge Técnico MercadoLibre
 ## API REST
 
 Recibe un Json que representa una secuencia de ADN.
-- ### Mutant: 
+- ### Mutant 
 Devuelve **200-OK** si encuentra más de una secuencia de cuatro letras iguales, en forma oblicua, horizontal o vertical.\
 Caso contrario devuelve **403-Forbidden**.
 
