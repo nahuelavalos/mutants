@@ -1,6 +1,6 @@
 # Mutantes
 
-Challenge Mercadolibre
+Challenge MercadoLibre
 
 ## API REST
 
