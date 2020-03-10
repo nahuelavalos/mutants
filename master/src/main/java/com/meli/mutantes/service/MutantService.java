@@ -32,8 +32,8 @@ public class MutantService {
                 if (mat[i][j].equals(mat[i][j+1]) && mat[i][j+1].equals(mat[i][j+2]) && mat[i][j+2].equals(mat[i][j+3])) {
                     System.out.print(mat[i][j] + mat[i][j+1] + mat[i][j+2] + mat[i][j+3] + " ");
                     count++;
-                    //if(count==2)
-                    //{ return true; }
+                    if(count==2)
+                    { return true; }
                 }
             }
         }
@@ -45,8 +45,8 @@ public class MutantService {
                 if (mat[i][j].equals(mat[i+1][j]) && mat[i+1][j].equals(mat[i+2][j]) && mat[i+2][j].equals(mat[i+3][j])) {
                     System.out.print(mat[i][j] + mat[i+1][j] + mat[i+2][j] + mat[i+3][j] + " ");
                     count++;
-                    //if(count==2)
-                    //{ return true; }
+                    if(count==2)
+                    { return true; }
                 }
             }
         }
@@ -58,8 +58,8 @@ public class MutantService {
                 if (mat[i][j].equals(mat[i+1][j+1]) && mat[i+1][j+1].equals(mat[i+2][j+2]) && mat[i+2][j+2].equals(mat[i+3][j+3])) {
                     System.out.print(mat[i][j] + mat[i+1][j+1] + mat[i+2][j+2] + mat[i+3][j+3] + " ");
                     count++;
-                    //if(count==2)
-                    //{ return true; }
+                    if(count==2)
+                    { return true; }
                 }
             }
         }
@@ -71,22 +71,22 @@ public class MutantService {
                 if (mat[i][j].equals(mat[i-1][j+1]) && mat[i-1][j+1].equals(mat[i-2][j+2]) && mat[i-2][j+2].equals(mat[i-3][j+3])) {
                     System.out.print(mat[i][j] + mat[i-1][j+1] + mat[i-2][j+2] + mat[i-3][j+3] + " ");
                     count++;
-                    //if(count==2)
-                    //{ return true; }
+                    if(count==2)
+                    { return true; }
                 }
             }
         }
         System.out.println();
 
-        //return false;
-        if(count>=2) {
+        return false;
+        /*if(count>=2) {
             System.out.println("TRUE");
             return true;
         }
         else {
             System.out.println("FALSE");
             return false;
-        }
+        }*/
     }
 
     public static boolean isValid(String[] dna)
